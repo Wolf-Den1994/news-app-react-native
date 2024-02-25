@@ -1,26 +1,10 @@
 import { View } from 'react-native';
-import styled from 'styled-components/native'
-
-const Post = styled.View`
-  padding: 15px;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(0, 0, 0, 0.1);
-  border-bottom-style: solid;
-`;
-
-const PostImage = styled.Image`
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
-  margin-right: 12px;
-`;
+import Post from './components/Post';
 
 export default function App() {
   return (
     <View>
-      <Post>
-        <PostImage source={{ uri: 'https://i.ucrazy.ru/files/pics/2023.10/2023-10-17-21-53-072.webp' }} />
-      </Post>
+      <Post title='Test' imageUrl='https://i.ucrazy.ru/files/pics/2023.10/2023-10-17-21-53-072.webp' createdAt='12/22/2024' />
     </View>
   );
 }
