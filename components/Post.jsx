@@ -9,6 +9,7 @@ const PostView = styled.View`
 `;
 
 const PostDetails = styled.View`
+  flex: 1;
   flex-direction: column;
   justify-content: center;
 `;
