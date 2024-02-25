@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-import { View, Text, FlatList, Alert, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Alert,
+  ActivityIndicator,
+  RefreshControl,
+} from 'react-native';
 import axios from 'axios';
 import Post from './components/Post';
 import { randomDate, formatDate } from './utils/common';
@@ -46,7 +53,7 @@ export default function App() {
         alignItems: 'center',
       }}>
         <ActivityIndicator size="large" />
-        <Text style={{marginTop: 15}}>Loading...</Text>
+        <Text style={{ marginTop: 15 }}>Loading...</Text>
       </View>
     )
   }
@@ -54,6 +61,7 @@ export default function App() {
   return (
     <View>
       <FlatList
+        refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchData} />}
         data={items}
         renderItem={({ item }) => (
           <Post
