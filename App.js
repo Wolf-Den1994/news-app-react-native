@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
+import styled from 'styled-components/native'
+
+const Post = styled.View`
+  padding: 15px;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-bottom-style: solid;
+`;
+
+const PostImage = styled.Image`
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-right: 12px;
+`;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Post>
+        <PostImage source={{ uri: 'https://i.ucrazy.ru/files/pics/2023.10/2023-10-17-21-53-072.webp' }} />
+      </Post>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
