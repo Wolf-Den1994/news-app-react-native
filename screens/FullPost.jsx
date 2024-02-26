@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
-import { View, Alert } from 'react-native';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { API_KEY } from "@env"
-import Loading from '../components/Loading';
 
 const PostImage = styled.Image`
   width: 100%;
@@ -17,35 +14,19 @@ const PostText = styled.Text`
   line-height: 24px;
 `;
 
-const FullPostScreem = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
-
-  const fetchData = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
-      setData(data.articles);
-    } catch (err) {
-      console.error(err);
-      Alert.alert('Error', 'Oops, failed to retrieve data!');
-    } finally {
-      setIsLoading(false);
-    }
-  }
+const FullPostScreem = ({ route, navigation }) => {
+  const { title, desc, urlImage } = route.params;
 
   useEffect(() => {
-    fetchData();
+    navigation.setOptions({
+      title,
+    })
   }, [])
 
-  if (isLoading) {
-    return <Loading />
-  }
-
   return (
-    <View style={{padding: 20}}>
-      <PostImage source={{ uri: data[4].urlToImage }} />
-      <PostText>{data[4].description}</PostText>
+    <View style={{ padding: 20 }}>
+      <PostImage source={{ uri: urlImage }} />
+      <PostText>{desc}</PostText>
     </View>
   )
 }

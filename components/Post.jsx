@@ -32,13 +32,21 @@ const PostData = styled.Text`
   margin-top: 2px;
 `;
 
+const truncateTitle = (str) => {
+  if (str.length >= 50) {
+    return str.substring(0, 50) + '...';
+  }
+
+  return str;
+}
+
 const Post = ({ title, imageUrl, createdAt }) => {
   return (
     <PostView>
       <PostImage source={{ uri: imageUrl || 'https://static.wikia.nocookie.net/paranormal-strange/images/7/75/No_image_available.png/revision/latest?cb=20230116043709' }} />
       <PostDetails>
-        <PostTitle>{title}</PostTitle>
-        <PostData>{createdAt}</PostData>
+        <PostTitle>{truncateTitle(title)}</PostTitle>
+        <PostData>{new Date(createdAt).toLocaleDateString()}</PostData>
       </PostDetails>
     </PostView>
   );

@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react';
-import {
-  View,
-  FlatList,
-  Alert,
-  RefreshControl,
-  TouchableOpacity,
-} from 'react-native';
+import { View, FlatList, Alert, RefreshControl, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import Post from '../components/Post';
 import Loading from '../components/Loading';
 import { API_KEY } from "@env"
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState();
 
@@ -42,7 +36,11 @@ const HomeScreen = () => {
         refreshControl={<RefreshControl refreshing={isLoading} onRefresh={fetchData} />}
         data={items}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('FullPost', {
+            title: item.title,
+            desc: item.description,
+            urlImage: item.urlToImage,
+          })}>
             <Post
               title={item.title}
               imageUrl={item.urlToImage}
