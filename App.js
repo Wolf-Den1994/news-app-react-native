@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import HomeScreen from './screens/Home';
+import FullPostScreem from './screens/FullPost';
 import EmptySpace from './components/EmptySpace'
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
     <View>
       <EmptySpace />
       <HomeScreen />
+      {/* <FullPostScreem /> */}
     </View>
   );
 }

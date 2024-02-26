@@ -35,7 +35,7 @@ const PostData = styled.Text`
 const Post = ({ title, imageUrl, createdAt }) => {
   return (
     <PostView>
-      <PostImage source={{ uri: imageUrl }} />
+      <PostImage source={{ uri: imageUrl || 'https://static.wikia.nocookie.net/paranormal-strange/images/7/75/No_image_available.png/revision/latest?cb=20230116043709' }} />
       <PostDetails>
         <PostTitle>{title}</PostTitle>
         <PostData>{createdAt}</PostData>

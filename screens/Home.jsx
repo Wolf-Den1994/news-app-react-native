@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import {
   View,
-  Text,
   FlatList,
   Alert,
-  ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
 import Post from '../components/Post';
+import Loading from '../components/Loading';
 import { API_KEY } from "@env"
 
 const HomeScreen = () => {
@@ -34,16 +33,7 @@ const HomeScreen = () => {
   }, [])
 
   if (isLoading) {
-    return (
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <ActivityIndicator size="large" />
-        <Text style={{ marginTop: 15 }}>Loading...</Text>
-      </View>
-    )
+    return <Loading />
   }
 
   return (
