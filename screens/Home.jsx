@@ -11,8 +11,9 @@ const HomeScreen = ({ navigation }) => {
 
   const fetchData = async () => {
     try {
+      const apiKey = process.env.API_KEY || API_KEY;
       setIsLoading(true);
-      const { data } = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+      const { data } = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`);
       setItems(data.articles);
     } catch (err) {
       console.error(err);
